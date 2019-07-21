@@ -34,6 +34,9 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
+      #The render method is used so that the @article object is passed back to the new template when it is rendered.
+      #This rendering is done within the same request as the form submission, whereas the redirect_to will tell the
+      #browser to issue another request.
       redirect_to @article
     else
       render 'edit'
